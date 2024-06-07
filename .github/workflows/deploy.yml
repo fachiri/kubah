@@ -24,6 +24,7 @@ jobs:
             git pull origin main
             composer install
             php artisan optimize
-            exec bash -l
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
             npm install
             npm run build
