@@ -8,24 +8,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [21.x]
-        php-version: [8.2.x]
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Set up PHP ${{ matrix.php-version }}
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php-version }}
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v0.1.7
@@ -37,8 +22,28 @@ jobs:
           script: |
             cd /home/jejakode/laravel/kubah/
             git pull
-            composer install
-            php artisan optimize
-            export PATH=$PATH:/usr/local/bin
-            npm install
-            npm run build
+            composer_install
+            php artisan_optimize
+            npm_install
+            npm_run_build
+
+      # - name: Clean up
+      #   run: |
+      #     rm -rf node_modules
+      #     composer clear-cache
+
+  composer_install:
+    name: Composer Install
+    run: composer install
+
+  php artisan_optimize:
+    name: PHP Artisan Optimize
+    run: php artisan optimize
+
+  npm_install:
+    name: NPM Install
+    run: npm install
+
+  npm_run_build:
+    name: NPM Run Build
+    run: npm run build
