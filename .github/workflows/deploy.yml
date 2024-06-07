@@ -24,5 +24,6 @@ jobs:
             git pull origin main
             composer install
             php artisan optimize
+            exec bash -l
             npm install
             npm run build
