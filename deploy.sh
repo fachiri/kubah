@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Lakukan git pull dari repositori
-git pull origin main
-
 # Instal dependensi menggunakan Composer
 composer install
 

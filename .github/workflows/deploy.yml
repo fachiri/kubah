@@ -20,4 +20,9 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: 64000
           script: |
-            cd /home/jejakode/laravel/kubah/ && ./deploy.sh
+            cd /home/jejakode/laravel/kubah/
+            git pull origin main
+            composer install
+            php artisan optimize
+            npm install
+            npm run build
