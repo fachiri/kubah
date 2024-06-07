@@ -20,5 +20,4 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: 64000
           script: |
-            exec bash \-l
             cd /home/jejakode/laravel/kubah/ && ./deploy.sh
