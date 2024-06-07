@@ -31,7 +31,7 @@
 				<x-form.input class="mb-5" name="password" label="Password" />
 				<x-form.input class="mb-5" name="password_confirmation" label="Konfirmasi Password" />
 			</div>
-			<button type="submit" class="w-full rounded-lg bg-purple-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto">Submit</button>
+			<button type="submit" class="w-full rounded-lg bg-purple-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
 		</form>
 		<div class="flex justify-between items-center space-x-3 pt-1">
 			<div class="border flex-1" style="height: 1px"></div>

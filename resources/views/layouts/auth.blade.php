@@ -28,7 +28,7 @@
 		</style>
 	</head>
 
-	<body class="auth-bg">
+	<body class="auth-bg max-w-md mx-auto">
 		<header class="p-5">
 			<h1 class="text-center text-2xl font-bold color-gradient">KuBah</h1>
 		</header>
