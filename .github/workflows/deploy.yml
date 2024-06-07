@@ -33,6 +33,7 @@ jobs:
           host: ${{ secrets.IP }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
+          port: 64000
           script: |
             cd /home/jejakode/laravel/kubah/
             git pull
