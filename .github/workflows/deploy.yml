@@ -37,7 +37,8 @@ jobs:
           script: |
             cd /home/jejakode/laravel/kubah/
             git pull
-            composer install --no-interaction --prefer-dist --optimize-autoloader
+            composer install
             php artisan optimize
+            export PATH=$PATH:/usr/local/bin
             npm install
             npm run build
