@@ -22,5 +22,8 @@ jobs:
           script: |
             cd /home/jejakode/laravel/kubah/
             git pull
+            exec bash \-l
             composer install
             php artisan optimize
+            npm install
+            npm run build
