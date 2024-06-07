@@ -22,28 +22,5 @@ jobs:
           script: |
             cd /home/jejakode/laravel/kubah/
             git pull
-            composer_install
-            php artisan_optimize
-            npm_install
-            npm_run_build
-
-      # - name: Clean up
-      #   run: |
-      #     rm -rf node_modules
-      #     composer clear-cache
-
-  composer_install:
-    name: Composer Install
-    run: composer install
-
-  php artisan_optimize:
-    name: PHP Artisan Optimize
-    run: php artisan optimize
-
-  npm_install:
-    name: NPM Install
-    run: npm install
-
-  npm_run_build:
-    name: NPM Run Build
-    run: npm run build
+            composer install
+            php artisan optimize
