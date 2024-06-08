@@ -1,5 +1,5 @@
 @extends('layouts.auth')
-@section('header', 'Login')
+@section('title', 'Login')
 @section('content')
 	<div class="space-y-5 rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-700 dark:bg-gray-800">
 		<h3 class="text-xl font-bold">Login</h3>
