@@ -59,18 +59,22 @@ return [
         ],
         'shortcuts' => [
             [
-                'name' => 'Shortcut Link 1',
-                'description' => 'Shortcut Link 1 Description',
-                'url' => '/shortcutlink1',
+                'name' => 'Login',
+                'description' => 'Masuk ke akun',
+                'url' => '/login',
                 'icons' => [
-                    "src" => "/images/icons/icon-72x72.png",
+                    "src" => asset("/images/icons/icon-72x72.png"),
                     "purpose" => "any"
                 ]
             ],
             [
-                'name' => 'Shortcut Link 2',
-                'description' => 'Shortcut Link 2 Description',
-                'url' => '/shortcutlink2'
+                'name' => 'Register',
+                'description' => 'Buat akun',
+                'url' => '/register',
+                'icons' => [
+                    "src" => asset("/images/icons/icon-72x72.png"),
+                    "purpose" => "any"
+                ]
             ]
         ],
         'custom' => []
