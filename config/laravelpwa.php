@@ -9,8 +9,8 @@ return [
         'background_color' => '#ffffff',
         'theme_color' => '#000000',
         'display' => 'standalone',
-        'orientation'=> 'any',
-        'status_bar'=> 'black',
+        'orientation' => 'any',
+        'status_bar' => 'black',
         'icons' => [
             '72x72' => [
                 'path' => '/images/icons/icon-72x72.png',
@@ -63,8 +63,10 @@ return [
                 'description' => 'Masuk ke akun',
                 'url' => '/login',
                 'icons' => [
-                    "src" => asset("/images/icons/icon-72x72.png"),
-                    "purpose" => "any"
+                    "src" => "/images/icons/icon-192x192.png",
+                    "type" => "image/png",
+                    "sizes" => "192x192",
+                    "purpose" => 'any'
                 ]
             ],
             [
@@ -72,8 +74,10 @@ return [
                 'description' => 'Buat akun',
                 'url' => '/register',
                 'icons' => [
-                    "src" => asset("/images/icons/icon-72x72.png"),
-                    "purpose" => "any"
+                    "src" => "/images/icons/icon-192x192.png",
+                    "type" => "image/png",
+                    "sizes" => "192x192",
+                    "purpose" => 'any'
                 ]
             ]
         ],
