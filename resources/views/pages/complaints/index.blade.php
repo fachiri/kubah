@@ -1,7 +1,7 @@
 @extends('layouts.main')
-@section('title', 'Report')
+@section('title', 'Pengaduan')
 @section('content')
 	<section>
-		Report Page
+		Pengaduan
 	</section>
 @endsection
