@@ -30,8 +30,8 @@
 @extends('layouts.main')
 @section('title', 'Chat')
 @section('header')
-	<div class="px-5 pt-4">
-		<h1 class="text-2xl font-bold text-gray-700">Chat</h1>
+	<div class="px-5 py-3 bg-purple-700">
+		<h1 class="text-xl font-bold text-slate-200">Konsultasi</h1>
 	</div>
 @endsection
 @section('content')
