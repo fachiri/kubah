@@ -3,7 +3,9 @@
 @section('content')
 	<div class="space-y-5 rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-700 dark:bg-gray-800">
 		<h3 class="text-xl font-bold">Login</h3>
-		<form class="mx-auto">
+		<x-alert />
+		<form action="{{ route('auth.login.authenticate') }}" method="POST" class="mx-auto">
+			@csrf
 			<div>
 				<x-form.input class="mb-5" type="email" name="email" label="Email" placeholder="contoh@gmail.com" />
 				<x-form.input class="mb-5" type="password" name="password" label="Password" placeholder="**********" />

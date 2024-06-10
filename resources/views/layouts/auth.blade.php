@@ -32,6 +32,7 @@
 			@yield('content')
 		</main>
 		@include('includes.footer')
+		@stack('scripts')
 	</body>
 
 </html>
