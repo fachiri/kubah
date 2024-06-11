@@ -25,6 +25,7 @@
 				overflow: hidden;
 			}
 		</style>
+		@stack('css')
 	</head>
 
 	<body class="bg-slate-300">

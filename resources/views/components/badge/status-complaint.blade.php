@@ -1,14 +1,17 @@
+@php
+    use App\Constants\ComplaintStatus;
+@endphp
 <x-badge value="{{ $status }}" :options="[
     (object) [
         'color' => 'blue',
-        'value' => 'PENDING'
+        'value' => ComplaintStatus::PENDING
     ],
     (object) [
         'color' => 'yellow',
-        'value' => 'IN PROGRESS'
+        'value' => ComplaintStatus::IN_PROGRESS
     ],
     (object) [
         'color' => 'green',
-        'value' => 'RESOLVED'
+        'value' => ComplaintStatus::RESOLVED
     ]
 ]" />

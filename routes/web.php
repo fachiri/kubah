@@ -19,7 +19,7 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');
     Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
-    Route::get('/complaints', [ComplaintController::class, 'index'])->name('complaints.index');
+    Route::resource('/complaints', ComplaintController::class)->names('complaints');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
