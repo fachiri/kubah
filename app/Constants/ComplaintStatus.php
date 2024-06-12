@@ -10,6 +10,7 @@ class ComplaintStatus
     public const PENDING = 'Pending';
     public const IN_PROGRESS = 'In Progress';
     public const RESOLVED = 'Resolved';
+    public const CANCELED = 'Canceled';
 
     public static function all(): Collection
     {
