@@ -67,6 +67,8 @@ class ArticleSeeder extends Seeder
                     'content' => $article->content,
                     'image' => $imageName
                 ]);
+            } else {
+                $this->command->info('Article already exists.');
             }
         }
     }
