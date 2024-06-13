@@ -16,7 +16,7 @@ class ChatPolicy
 
     public function view(User $user, Chat $chat): bool
     {
-        return ($user->isCommonUser() && $user->common_user->id === $chat->common_user_id) || $user->isVolunteer();
+        return ($user->isCommonUser() && $user->common_user->id == $chat->common_user_id) || $user->isVolunteer();
     }
 
     public function create(User $user): bool
