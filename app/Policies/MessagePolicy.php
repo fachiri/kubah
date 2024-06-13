@@ -12,6 +12,6 @@ class MessagePolicy
 {
     public function create(User $user, Chat $chat): bool
     {
-        return $chat->status === ChatStatus::OPEN;
+        return $chat->status == ChatStatus::OPEN;
     }
 }

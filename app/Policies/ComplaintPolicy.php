@@ -16,7 +16,7 @@ class ComplaintPolicy
 
     public function view(User $user, Complaint $complaint): bool
     {
-        return $user->isAdmin() || ($user->id === $complaint->user_id);
+        return $user->isAdmin() || ($user->id == $complaint->user_id);
     }
 
     public function create(User $user): bool
@@ -26,12 +26,12 @@ class ComplaintPolicy
 
     public function update(User $user, Complaint $complaint): bool
     {
-        return $user->id === $complaint->user_id && $complaint->status === ComplaintStatus::PENDING;
+        return $user->id == $complaint->user_id && $complaint->status == ComplaintStatus::PENDING;
     }
 
     public function delete(User $user, Complaint $complaint): bool
     {
-        return $user->id === $complaint->user_id && $complaint->status === ComplaintStatus::CANCELED;
+        return $user->id == $complaint->user_id && $complaint->status == ComplaintStatus::CANCELED;
     }
 
     /**
@@ -52,16 +52,16 @@ class ComplaintPolicy
 
     public function process(User $user, Complaint $complaint): bool
     {
-        return $user->isAdmin() && $complaint->status === ComplaintStatus::PENDING;
+        return $user->isAdmin() && $complaint->status == ComplaintStatus::PENDING;
     }
 
     public function cancel(User $user, Complaint $complaint): bool
     {
-        return $user->id === $complaint->user_id && $complaint->status === ComplaintStatus::PENDING;
+        return $user->id == $complaint->user_id && $complaint->status == ComplaintStatus::PENDING;
     }
 
     public function resolve(User $user, Complaint $complaint): bool
     {
-        return $user->isAdmin() && $complaint->status === ComplaintStatus::IN_PROGRESS;
+        return $user->isAdmin() && $complaint->status == ComplaintStatus::IN_PROGRESS;
     }
 }

@@ -26,6 +26,6 @@ class ChatPolicy
 
     public function close(User $user, Chat $chat): bool
     {
-        return $user->id === $chat->common_user->user_id && $chat->status === ChatStatus::OPEN;
+        return $user->id == $chat->common_user->user_id && $chat->status == ChatStatus::OPEN;
     }
 }

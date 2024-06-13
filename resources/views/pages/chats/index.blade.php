@@ -29,10 +29,10 @@
 				<li class="p-3 hover:bg-gray-200">
 					<a href="{{ route('chats.show', $chat->ulid) }}" class="block">
 						<div class="flex items-center space-x-4 rtl:space-x-reverse">
-							<img src="{{ $chat->is_anonim === 0 && $chat->common_user->user->avatar ? asset('storage/avatars/' . $chat->common_user->user->avatar) : asset('images/placeholder/avatar.png') }}" alt="Profile" class="h-8 w-8 rounded-full border">
+							<img src="{{ $chat->is_anonim == 0 && $chat->common_user->user->avatar ? asset('storage/avatars/' . $chat->common_user->user->avatar) : asset('images/placeholder/avatar.png') }}" alt="Profile" class="h-8 w-8 rounded-full border">
 							<div class="min-w-0 flex-1">
 								<p class="truncate text-sm font-medium text-gray-900 dark:text-white">
-									{{ $chat->is_anonim === 0 ? $chat->common_user->user->name : 'Anonim' }}
+									{{ $chat->is_anonim == 0 ? $chat->common_user->user->name : 'Anonim' }}
 								</p>
 								<p class="truncate text-sm text-gray-500 dark:text-gray-400">
 									{{ $chat->subject }}

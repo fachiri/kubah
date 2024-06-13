@@ -32,7 +32,7 @@
 	<section class="min-h-60 custom-scrollbar flex max-h-[calc(100vh-95px)] flex-col overflow-y-auto bg-slate-200 p-3">
 		<div class="flex-grow space-y-3">
 			@foreach ($chat->messages as $message)
-				@if ($message->is_system === 1)
+				@if ($message->is_system == 1)
 					<div class="flex justify-center gap-2.5">
 						<div class="leading-1.5 flex max-w-[320px] flex-col p-2.5 text-center">
 							<p class="mb-1 text-xs italic text-gray-900 dark:text-white">
@@ -41,7 +41,7 @@
 							<span class="text-xs text-gray-500 dark:text-gray-400">{{ $message->created_at->diffForHumans() }}</span>
 						</div>
 					</div>
-				@elseif ($message->user_id === auth()->user()->id)
+				@elseif ($message->user_id == auth()->user()->id)
 					<div class="flex justify-end gap-2.5">
 						<div class="leading-1.5 flex max-w-[320px] flex-col bg-white p-2.5">
 							<p class="mb-2 text-sm font-normal text-gray-900 dark:text-white">
@@ -52,11 +52,11 @@
 					</div>
 				@else
 					<div class="flex items-start gap-2.5">
-						<img src="{{ ($message->user->isVolunteer() && $message->user->avatar) || ($message->user->isCommonUser() && $message->user->avatar && $chat->is_anonim === 0) ? asset('storage/avatars/' . $message->user->avatar) : asset('images/placeholder/avatar.png') }}" alt="Profile" class="h-8 w-8 rounded-full border">
+						<img src="{{ ($message->user->isVolunteer() && $message->user->avatar) || ($message->user->isCommonUser() && $message->user->avatar && $chat->is_anonim == 0) ? asset('storage/avatars/' . $message->user->avatar) : asset('images/placeholder/avatar.png') }}" alt="Profile" class="h-8 w-8 rounded-full border">
 						<div class="leading-1.5 flex max-w-[320px] flex-col bg-white p-2.5">
 							<div class="flex items-center space-x-2 rtl:space-x-reverse">
 								<span class="text-sm font-semibold text-gray-900 dark:text-white">
-									{{ $message->user->isCommonUser() && $message->chat->is_anonim === 1 ? 'Anonim' : $message->user->name }}
+									{{ $message->user->isCommonUser() && $message->chat->is_anonim == 1 ? 'Anonim' : $message->user->name }}
 								</span>
 								@if ($message->user->isVolunteer())
 									<span class="me-2 rounded bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300">Relawan</span>
