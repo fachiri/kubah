@@ -6,9 +6,10 @@
 	</div>
 @endsection
 @section('content')
+	<x-alert />
 	<section class="mb-5">
 		<div class="flex flex-col items-center">
-			<img class="mb-3 h-24 w-24 rounded-full shadow-lg" src="{{ asset('images/placeholder/profile.jpg') }}" alt="Profile image" />
+			<img class="mb-3 h-24 w-24 rounded-full border shadow-lg" src="{{ auth()->user()->avatar ? asset('storage/avatars/' . auth()->user()->avatar) : asset('images/placeholder/avatar.png') }}" alt="Profile image">
 			<h5 class="mb-1 text-xl font-medium text-gray-700 dark:text-white">{{ auth()->user()->name }}</h5>
 			<span class="text-sm text-gray-500 dark:text-gray-400">
 				@if (auth()->user()->manager)
@@ -86,4 +87,11 @@
 			</div>
 		</div>
 	</div>
+@endpush
+@push('scripts')
+	<script>
+		document.getElementById('change-profile').addEventListener('change', function() {
+			this.form.submit();
+		});
+	</script>
 @endpush

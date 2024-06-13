@@ -11,7 +11,7 @@ class ComplaintPolicy
 {
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->isCommonUser() || $user->isAdmin();
     }
 
     public function view(User $user, Complaint $complaint): bool
@@ -21,7 +21,7 @@ class ComplaintPolicy
 
     public function create(User $user): bool
     {
-        return $user->isCommonUser() || $user->isVolunteer();
+        return $user->isCommonUser();
     }
 
     public function update(User $user, Complaint $complaint): bool
