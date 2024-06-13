@@ -24,6 +24,7 @@
 	</section>
 	<section>
 		<ul class="max-w-md divide-y divide-gray-200 border dark:divide-gray-700">
+			@if (count($chats) > 0)
 			@foreach ($chats as $chat)
 				<li class="p-3 hover:bg-gray-200">
 					<a href="{{ route('chats.show', $chat->ulid) }}" class="block">
@@ -44,6 +45,14 @@
 					</a>
 				</li>
 			@endforeach
+			@else
+				<li class="p-3 text-center text-sm text-gray-700">
+					Data tidak ditemukan
+				</li>
+			@endif
 		</ul>
+	</section>
+	<section>
+		{{ $chats->onEachSide(5)->links() }}
 	</section>
 @endsection

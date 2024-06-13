@@ -72,11 +72,11 @@
 						</a>
 						@can('viewAny', App\Models\Chat::class)
 							<a href="{{ route('chats.index') }}" class="group inline-flex flex-col items-center justify-center border-e border-gray-200 px-5 hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-800">
-								<svg class="{{ request()->is('chat') ? 'text-purple-700' : 'text-gray-500' }} mb-2 h-5 w-5 dark:text-gray-400 dark:group-hover:text-purple-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+								<svg class="{{ request()->is('chats') ? 'text-purple-700' : 'text-gray-500' }} mb-2 h-5 w-5 dark:text-gray-400 dark:group-hover:text-purple-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
 									<path fill-rule="evenodd" d="M4 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1v2a1 1 0 0 0 1.707.707L9.414 13H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4Z" clip-rule="evenodd" />
 									<path fill-rule="evenodd" d="M8.023 17.215c.033-.03.066-.062.098-.094L10.243 15H15a3 3 0 0 0 3-3V8h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1v2a1 1 0 0 1-1.707.707L14.586 18H9a1 1 0 0 1-.977-.785Z" clip-rule="evenodd" />
 								</svg>
-								<span class="{{ request()->is('chat') ? 'text-purple-700' : 'text-gray-500' }} text-sm dark:text-gray-400 dark:group-hover:text-purple-500">
+								<span class="{{ request()->is('chats') ? 'text-purple-700' : 'text-gray-500' }} text-sm dark:text-gray-400 dark:group-hover:text-purple-500">
 									Konsultasi
 								</span>
 							</a>
