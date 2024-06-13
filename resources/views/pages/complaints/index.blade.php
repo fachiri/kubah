@@ -62,24 +62,24 @@
 @section('header')
 	<x-main.header title="Pengaduan" />
 @endsection
+@section('actions')
+	@can('create', App\Models\Complaint::class)
+		<section class="fixed bottom-20 left-0 flex w-full justify-center bg-none">
+			<a href="{{ route('complaints.create') }}" class="inline-flex items-center rounded-lg bg-purple-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+				Buat Pengaduan
+				<svg class="ms-2 h-3.5 w-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+					<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14m-7 7V5" />
+				</svg>
+			</a>
+		</section>
+	@endcan
+@endsection
 @section('content')
-	<section class="fixed bottom-20 left-0 flex w-full justify-center bg-none">
-		<a href="{{ route('complaints.create') }}" class="inline-flex items-center rounded-lg bg-purple-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
-			Buat Pengaduan
-			<svg class="ms-2 h-3.5 w-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-				<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14m-7 7V5" />
-			</svg>
-		</a>
+	<x-alert />
+	<section class="mb-5">
+		<x-main.filter :route="route('complaints.index')" />
 	</section>
-	<section>
-		{{-- <div class="flex justify-between">
-			<h3 class="text-md font-semibold text-gray-700 mb-3">Pengaduan Saya</h3>
-			<span>
-				<svg class="w-6 h-6 text-gray-700 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-					<path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M18.796 4H5.204a1 1 0 0 0-.753 1.659l5.302 6.058a1 1 0 0 1 .247.659v4.874a.5.5 0 0 0 .2.4l3 2.25a.5.5 0 0 0 .8-.4v-7.124a1 1 0 0 1 .247-.659l5.302-6.059c.566-.646.106-1.658-.753-1.658Z"/>
-				</svg>				
-			</span>
-		</div> --}}
+	<section class="mb-5">
 		<ul class="max-w-md divide-y divide-gray-200 border dark:divide-gray-700">
 			@if (count($complaints) > 0)
 				@foreach ($complaints as $complaint)
@@ -102,10 +102,13 @@
 					</li>
 				@endforeach
 			@else
-				<li class="p-3 text-sm text-gray-700 text-center">
+				<li class="p-3 text-center text-sm text-gray-700">
 					Data tidak ditemukan
 				</li>
 			@endif
 		</ul>
+	</section>
+	<section>
+		{{ $complaints->onEachSide(5)->links() }}
 	</section>
 @endsection

@@ -33,7 +33,7 @@
 			<header>
 				@yield('header')
 			</header>
-			<nav class="fixed bottom-0 left-0 flex w-full justify-center z-50">
+			<nav class="fixed bottom-0 left-0 flex w-full justify-center z-40">
 				<div class="h-16 w-full max-w-md border-t border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700">
 					<div class="mx-auto grid h-full max-w-lg grid-cols-4 font-medium">
 						<a href="{{ route('home.index') }}" class="group inline-flex flex-col items-center justify-center border-x border-gray-200 px-5 hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-800">
@@ -72,9 +72,10 @@
 					</div>
 				</div>
 			</nav>
-			<main class="p-5 pb-20">
+			<main class="p-5 pb-20 space-y-5">
 				@yield('content')
 			</main>
+			@yield('actions')
 		</div>
 		@stack('modals')
 		@stack('scripts')

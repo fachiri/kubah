@@ -1,4 +1,11 @@
-@props(['action', 'method' => 'POST', 'id', 'color' => 'blue', 'text' => 'Anda yakin?'])
+@props([
+	'action',
+	'method' => 'POST',
+	'id',
+	'color' => 'blue',
+	'text' => 'Anda yakin?',
+	'labelButton' => 'Ya, saya yakin'
+])
 @php
 	$styles = [
 	    "red" => "bg-red-600 hover:bg-red-800 focus:ring-red-300 dark:focus:ring-red-800",
@@ -18,7 +25,7 @@
 		</svg>
 		<h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">{{ $text }}</h3>
 		<button data-modal-hide="{{ $id }}" type="submit" class="{{ $buttonColor }} inline-flex items-center rounded-lg px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4">
-			Ya, saya yakin
+			{{ $labelButton }}
 		</button>
 		<button data-modal-hide="{{ $id }}" type="button" class="ms-3 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-purple-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">Tidak</button>
 	</form>

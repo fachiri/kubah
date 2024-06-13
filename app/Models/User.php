@@ -57,4 +57,24 @@ class User extends Authenticatable
     {
         return $this->hasOne(CommonUser::class);
     }
+
+    public function isManager(): bool
+    {
+        return isset($this->manager);
+    }
+
+    public function isAdmin(): bool
+    {
+        return isset($this->admin);
+    }
+
+    public function isVolunteer(): bool
+    {
+        return isset($this->volunteer);
+    }
+
+    public function isCommonUser(): bool
+    {
+        return isset($this->common_user);
+    }
 }

@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('evidence', function (Blueprint $table) {
             $table->id();
             $table->string('filename');
-            $table->foreignId('complaint_id')->constrained();
+            $table->foreignId('complaint_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
