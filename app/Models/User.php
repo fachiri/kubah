@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'device_token',
     ];
 
     protected $hidden = [
@@ -76,5 +77,10 @@ class User extends Authenticatable
     public function isCommonUser(): bool
     {
         return isset($this->common_user);
+    }
+
+    public function routeNotificationForFcm()
+    {
+        return $this->device_token; // Pastikan kolom device_token ada di tabel users
     }
 }
