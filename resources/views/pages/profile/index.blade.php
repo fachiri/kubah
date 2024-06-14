@@ -89,9 +89,5 @@
 	</div>
 @endpush
 @push('scripts')
-	<script>
-		document.getElementById('change-profile').addEventListener('change', function() {
-			this.form.submit();
-		});
-	</script>
+	
 @endpush

@@ -90,5 +90,7 @@
 	</section>
 @endsection
 @push('modals')
-	<x-modal.confirm id="confirm-close-modal" :action="route('chats.close', $chat->ulid)" method="PATCH" text="Tutup sesi konsultasi ini?" color="red" />
+	@can('close', $chat)
+		<x-modal.confirm id="confirm-close-modal" :action="route('chats.close', $chat->ulid)" method="PATCH" text="Tutup sesi konsultasi ini?" color="red" />
+	@endcan
 @endpush
