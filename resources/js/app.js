@@ -26,7 +26,7 @@ const messaging = getMessaging(app);
 
 onMessage(messaging, (payload) => {
   console.log('Message received. ', payload);
-  alert(payload.notification.title);
+  alert(payload.data.title);
 });
 
 Notification.requestPermission().then(permission => {

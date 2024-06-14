@@ -17,58 +17,32 @@ class PushNotif
         $this->serverApiKey = env('FCM_SERVER_KEY');
     }
 
-    /**
-     * Kirim notifikasi kepada satu user dengan token tertentu.
-     *
-     * @param string $token
-     * @param string $title
-     * @param string $body
-     * @param array $data
-     * @return mixed
-     */
-    public function sendToUser(string $token, string $title, string $body, array $data = [])
+    public function sendToUser(string $token, string $title, string $body)
     {
         $payload = [
             "to" => $token,
-            "notification" => [
+            "data" => [
                 "title" => $title,
                 "body" => $body,
             ],
-            // "data" => $data,
         ];
 
         return $this->send($payload);
     }
 
-    /**
-     * Broadcast notifikasi kepada array tokens.
-     *
-     * @param array $tokens
-     * @param string $title
-     * @param string $body
-     * @param array $data
-     * @return mixed
-     */
-    public function broadcast(array $tokens, string $title, string $body, array $data = [])
+    public function broadcast(array $tokens, string $title, string $body)
     {
         $payload = [
             "registration_ids" => $tokens,
-            "notification" => [
+            "data" => [
                 "title" => $title,
                 "body" => $body,
             ],
-            // "data" => $data,
         ];
 
         return $this->send($payload);
     }
 
-    /**
-     * Fungsi untuk mengirim payload ke FCM.
-     *
-     * @param array $payload
-     * @return mixed
-     */
     protected function send(array $payload)
     {
         $headers = [
