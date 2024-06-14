@@ -29,22 +29,25 @@ onMessage(messaging, (payload) => {
   // ...
 });
 
-const permission = await Notification.requestPermission();
-if (permission === 'granted') {
-  console.log('Notification permission granted.');
-  getToken(messaging, {
-    vapidKey: 'BNb9WZOQnnMKvrKrC5gLNeeWLds2zIa7cazPkx1RN8qB5CToJp7CMAQUt0acaunJxQI175JQeU0JQFSK4NpbVlI'
-  }).then((currentToken) => {
-    if (currentToken) {
-      if (window.location.pathname === '/login') {
-        document.getElementById('device_token').value = currentToken;
+Notification.requestPermission().then(permission => {
+  if (permission === 'granted') {
+    console.log('Notification permission granted.');
+    getToken(messaging, {
+      vapidKey: 'BNb9WZOQnnMKvrKrC5gLNeeWLds2zIa7cazPkx1RN8qB5CToJp7CMAQUt0acaunJxQI175JQeU0JQFSK4NpbVlI'
+    }).then(currentToken => {
+      if (currentToken) {
+        if (window.location.pathname === '/login') {
+          document.getElementById('device_token').value = currentToken;
+        }
+      } else {
+        console.log('No registration token available. Request permission to generate one.');
       }
-    } else {
-      console.log('No registration token available. Request permission to generate one.');
-    }
-  }).catch((err) => {
-    console.log('An error occurred while retrieving token. ', err);
-  });
-} else {
-  console.log('Notification permission not granted.');
-}
+    }).catch(err => {
+      console.log('An error occurred while retrieving token. ', err);
+    });
+  } else {
+    console.log('Notification permission not granted.');
+  }
+}).catch(err => {
+  console.log('Error requesting notification permission: ', err);
+});
