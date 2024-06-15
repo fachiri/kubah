@@ -51,7 +51,7 @@
 	<section>
 		<div class="mb-3 flex items-center justify-between">
 			<h4 class="text-xl font-bold">Artikel</h4>
-			<a href="#" class="flex items-center font-bold text-purple-700">
+			<a href="{{ route('articles.index') }}" class="flex items-center font-bold text-purple-700">
 				Semua
 				<svg class="h-6 w-6 text-purple-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
 					<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 16 4-4-4-4" />
@@ -61,14 +61,12 @@
 		<div class="grid grid-cols-2 gap-3">
 			@foreach ($articles as $article)
 				<div class="rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
-					<a href="#">
-						<img class="rounded-t-lg" src="{{ asset("storage/articles/$article->image") }}" alt="{{ $article->title }}" />
-					</a>
+					<img class="rounded-t-lg" src="{{ asset("storage/articles/$article->image") }}" alt="{{ $article->title }}" />
 					<div class="p-5">
-						<a href="#">
+						<a href="{{ route('articles.show', ['article' => $article->slug, 'from' => '/home']) }}">
 							<h5 class="truncate-multiline mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">{{ $article->title }}</h5>
 						</a>
-						<p class="truncate-multiline text-sm font-normal text-gray-700 dark:text-gray-400">{{ $article->content }}</p>
+						<p class="truncate-multiline text-sm font-normal text-gray-700 dark:text-gray-400">{{ strip_tags($article->content) }}</p>
 					</div>
 				</div>
 			@endforeach

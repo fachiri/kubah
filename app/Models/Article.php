@@ -4,19 +4,33 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
 class Article extends Model
 {
     use HasFactory;
 
-    protected $keyType = 'string';
+    protected $fillable = [
+        'title',
+        'image',
+        'content'
+    ];
 
-    public $incrementing = false;
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 
     public static function booted() {
         static::creating(function ($model) {
-            $model->id = Str::uuid();
+            $model->slug = Str::slug($model->title);
+            $model->user_id = auth()->user()->id;
         });
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -9,12 +9,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('slug');
+            $table->id();
+            $table->string('slug')->unique();
             $table->string('title');
             $table->text('content');
             $table->string('image');
             $table->unsignedTinyInteger('is_featured')->default(0);
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

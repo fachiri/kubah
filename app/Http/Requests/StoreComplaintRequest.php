@@ -15,7 +15,7 @@ class StoreComplaintRequest extends FormRequest
     {
         return [
             'reporter_role' => 'required|string',
-            'ktp' => 'required|file|mimes:jpeg,jpg,png|max:10240', // KTP max 10MB
+            'ktp' => 'required|file|mimes:jpeg,jpg,png,webp|max:10240', // KTP max 10MB
             'category' => 'required|string',
             'description' => 'required|string',
             'location' => 'required|string',
@@ -32,7 +32,7 @@ class StoreComplaintRequest extends FormRequest
             'reporter_role.required' => 'Status Pelapor wajib diisi.',
             'ktp.required' => 'KTP wajib diunggah.',
             'ktp.file' => 'KTP harus berupa file.',
-            'ktp.mimes' => 'KTP harus berupa file bertipe: jpeg, jpg, png.',
+            'ktp.mimes' => 'KTP harus berupa file bertipe: jpeg, jpg, png, webp.',
             'ktp.max' => 'Ukuran file KTP maksimal 10MB.',
             'category.required' => 'Kategori wajib diisi.',
             'description.required' => 'Deskripsi kejadian wajib diisi.',

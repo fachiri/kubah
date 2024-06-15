@@ -4,6 +4,7 @@
     'icon' => null,
     'label',
     'modal' => null,
+		'id' => ''
 ])
 
 @php
@@ -21,7 +22,7 @@
 @endphp
 
 @if (isset($href))
-	<a href="{{ $href }}" class="{{ $colorClass }} inline-flex items-center rounded-lg px-3 py-2 text-center text-sm font-medium text-white focus:outline-none focus:ring-4">
+	<a href="{{ $href }}" id="{{ $id }}" class="{{ $colorClass }} inline-flex items-center rounded-lg px-3 py-2 text-center text-sm font-medium text-white focus:outline-none focus:ring-4">
 		@if (isset($icon))
 			<svg class="me-1 h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
 				{{ $icon }}
@@ -30,7 +31,7 @@
 		{{ $label }}
 	</a>
 @else
-	<button {{ $attributes->class([$colorClass, 'inline-flex items-center rounded-lg px-3 py-2 text-center text-sm font-medium text-white focus:outline-none focus:ring-4'])->merge(['type' => 'button', 'data-modal-target' => $modal, 'data-modal-toggle' => $modal]) }}>
+	<button {{ $attributes->class([$colorClass, 'inline-flex items-center rounded-lg px-3 py-2 text-center text-sm font-medium text-white focus:outline-none focus:ring-4'])->merge(['type' => 'button', 'data-modal-target' => $modal, 'data-modal-toggle' => $modal, 'id' => $id]) }}>
 		@if (isset($icon))
 			<svg class="me-1 h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
 				{{ $icon }}
