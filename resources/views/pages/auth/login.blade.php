@@ -4,7 +4,7 @@
 	<div class="space-y-5 rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-700 dark:bg-gray-800">
 		<h3 class="text-xl font-bold">Login</h3>
 		<x-alert />
-		<form action="{{ route('auth.login.authenticate') }}" method="POST" class="mx-auto">
+		<form id="login-form" action="{{ route('auth.login.authenticate') }}" method="POST" class="mx-auto">
 			@csrf
 			<div>
 				<input type="hidden" value="" id="device_token" name="device_token">
@@ -30,3 +30,14 @@
 		</div>
 	</div>
 @endsection
+@push('scripts')
+	<script type="module">
+		const loginForm = document.getElementById('login-form');
+		const deviceTokenInput = document.getElementById('device_token');
+		loginForm.addEventListener('submit', (e) => {
+			e.preventDefault(deviceTokenInput.value);
+			deviceTokenInput.value = sessionStorage.getItem('device_token');
+			loginForm.submit();
+		})
+	</script>
+@endpush
