@@ -31,6 +31,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/complaints/{complaint}/cancel', [ComplaintController::class, 'cancel'])->name('complaints.cancel');
     Route::post('/complaints/{complaint}/resolve', [ComplaintController::class, 'resolve'])->name('complaints.resolve');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::patch('/profile/avatar', [ProfileController::class, 'avatar_update'])->name('profile.avatar.update');
     Route::get('/filepond/load/file', [FilePondController::class, 'load_file'])->name('filepond.load.file');
     Route::get('/filepond/load/files', [FilePondController::class, 'load_files'])->name('filepond.load.files');

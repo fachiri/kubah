@@ -29,7 +29,7 @@
 	<section>
 		<ul class="space-y-3">
 			<li class="rounded border p-3 hover:bg-gray-200">
-				<a href="#" class="flex w-full items-center justify-between">
+				<a href="{{ route('profile.edit') }}" class="flex w-full items-center justify-between">
 					<p class="truncate text-sm font-semibold text-gray-700 dark:text-white">
 						Informasi Pengguna
 					</p>
