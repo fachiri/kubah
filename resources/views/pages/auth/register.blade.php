@@ -32,8 +32,8 @@
 				        'value' => 'Perempuan',
 				    ],
 				]" />
-				<x-form.input class="mb-5" name="birthplace" label="Tempat Lahir" placeholder="Isi tempat lahir" />
-				<x-form.input class="mb-5" type="date" name="birthdate" label="Tanggal Lahir" />
+				<x-form.input class="mb-5" name="birth_place" label="Tempat Lahir" placeholder="Isi tempat lahir" />
+				<x-form.input class="mb-5" type="date" name="birth_date" label="Tanggal Lahir" />
 				<x-form.textarea class="mb-5" name="address" label="Alamat" placeholder="Isi alamat" />
 				<x-form.input class="mb-5" input-class="phone-id" type="tel" name="phone" label="No. HP" placeholder="Isi nomor HP" maxlength="12" />
 			</div>
