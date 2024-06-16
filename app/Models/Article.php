@@ -13,8 +13,11 @@ class Article extends Model
 
     protected $fillable = [
         'title',
+        'slug',
         'image',
-        'content'
+        'content',
+        'is_featured',
+        'user_id'
     ];
 
     public function getRouteKeyName(): string
@@ -25,7 +28,9 @@ class Article extends Model
     public static function booted() {
         static::creating(function ($model) {
             $model->slug = Str::slug($model->title);
-            $model->user_id = auth()->user()->id;
+        });
+        static::updating(function ($model) {
+            $model->slug = Str::slug($model->title);
         });
     }
 

@@ -15,7 +15,7 @@ class ArticlePolicy
 
     public function view(User $user, Article $article): bool
     {
-        return ($user->isVolunteer() && $user->id == $article->user_id) || $user->isAdmin();
+        return true;
     }
 
     public function create(User $user): bool
