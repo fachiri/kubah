@@ -17,27 +17,21 @@ class PushNotif
         $this->serverApiKey = env('FCM_SERVER_KEY');
     }
 
-    public function sendToUser(string $token, string $title, string $body)
+    public function sendToUser(string $token, array $data)
     {
         $payload = [
             "to" => $token,
-            "data" => [
-                "title" => $title,
-                "body" => $body,
-            ],
+            "data" => $data,
         ];
 
         return $this->send($payload);
     }
 
-    public function broadcast(array $tokens, string $title, string $body)
+    public function broadcast(array $tokens, array $data)
     {
         $payload = [
             "registration_ids" => $tokens,
-            "data" => [
-                "title" => $title,
-                "body" => $body,
-            ],
+            "data" => $data,
         ];
 
         return $this->send($payload);

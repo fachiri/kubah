@@ -8,6 +8,7 @@ use App\Models\Chat;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class MessageController extends Controller
 {
@@ -28,9 +29,16 @@ class MessageController extends Controller
             $tsDeviceToken = $chat->common_user->user->device_token;
             if ($tsDeviceToken && $message->user->id != $chat->common_user->user->id) {
                 $senderName = $message->user->name;
-                $title = "Pesan baru dari $senderName";
-                $body = $message->message;
-                $this->pushNotif->sendToUser($tsDeviceToken, $title, $body);
+                $imagePath = 'avatars/' . $message->user->avatar;
+                $imageUrl = Storage::exists('public/' . $imagePath) && $message->user->avatar ? asset('storage/' . $imagePath) : null;
+                $payload = [
+                    'title' => "Pesan baru",
+                    'notificationTitle' => "Pesan baru dari $senderName",
+                    'body' => $message->message,
+                    'senderName' => $senderName,
+                    'image' => $imageUrl
+                ];
+                $this->pushNotif->sendToUser($tsDeviceToken, $payload);
             }
 
             return redirect()->back()->with('success', 'Pesan terkirim.');

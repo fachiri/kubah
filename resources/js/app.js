@@ -10,6 +10,8 @@ import {
   onMessage
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging.js";
 
+import Toast from './tailwind-toastify';
+
 const firebaseConfig = {
   apiKey: "AIzaSyAQs1TmEH0joc4Sl1isoUVONkXYLmjeIq0",
   authDomain: "hokorin-projek.firebaseapp.com",
@@ -25,29 +27,45 @@ const app = initializeApp(firebaseConfig);
 const messaging = getMessaging(app);
 
 onMessage(messaging, (payload) => {
-  console.log('Message received. ', payload);
-  alert(payload.data.title);
+  Toast.notif({
+    title: payload.data.title,
+    imageSrc: payload.data.image ?? '/icon-128x128.png',
+    imageAlt: 'Profile image description',
+    name: payload.data.senderName,
+    content: payload.data.body,
+    timestamp: 'Baru saja',
+    timeout: 5000,
+  });
 });
 
-Notification.requestPermission().then(permission => {
-  if (permission === 'granted') {
-    console.log('Notification permission granted.');
-    getToken(messaging, {
-      vapidKey: 'BNb9WZOQnnMKvrKrC5gLNeeWLds2zIa7cazPkx1RN8qB5CToJp7CMAQUt0acaunJxQI175JQeU0JQFSK4NpbVlI'
-    }).then(currentToken => {
-      if (currentToken) {
-        if (window.location.pathname === '/login') {
-          document.getElementById('device_token').value = currentToken;
-        }
-      } else {
-        console.log('No registration token available. Request permission to generate one.');
-      }
-    }).catch(err => {
-      console.log('An error occurred while retrieving token. ', err);
-    });
-  } else {
-    console.log('Notification permission not granted.');
-  }
-}).catch(err => {
-  console.log('Error requesting notification permission: ', err);
-});
+if (Notification.permission === 'granted') {
+  getDeviceToken()
+} else {
+  Toast.confirm({
+    title: 'Izinkan Notifikasi',
+    subtitle: 'Izinkan notifikasi muncul di perangkat anda',
+    timeout: 5000,
+    confirmText: 'Izinkan',
+    onConfirm: function () {
+      requestNotifPermission()
+    }
+  });
+}
+
+function requestNotifPermission() {
+  Notification.requestPermission().then(permission => {
+    if (permission === 'granted') {
+      getDeviceToken()
+    }
+  });
+}
+
+function getDeviceToken() {
+  getToken(messaging, {
+    vapidKey: 'BNb9WZOQnnMKvrKrC5gLNeeWLds2zIa7cazPkx1RN8qB5CToJp7CMAQUt0acaunJxQI175JQeU0JQFSK4NpbVlI'
+  }).then(currentToken => {
+    if (currentToken) {
+      sessionStorage.setItem('device_token', currentToken);
+    }
+  });
+}
