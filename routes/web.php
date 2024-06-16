@@ -6,6 +6,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ComplaintController;
+use App\Http\Controllers\EmergencyController;
 use App\Http\Controllers\FilePondController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\SecurityController;
@@ -23,6 +24,8 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+    Route::get('/emergencies', [EmergencyController::class, 'index'])->name('emergencies.index');
+    Route::post('/emergencies/store', [EmergencyController::class, 'store'])->name('emergencies.store');
     Route::resource('/chats', ChatController::class)->names('chats');
     Route::patch('/chats/{chat}/close', [ChatController::class, 'close'])->name('chats.close');
     Route::post('/messages/store/{chat}', [MessageController::class, 'store'])->name('messages.store');

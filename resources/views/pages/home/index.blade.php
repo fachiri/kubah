@@ -2,8 +2,29 @@
 @section('title', 'Home')
 @section('header')
 	<div class="px-5 pt-4">
-		<h1 class="color-gradient text-center text-2xl font-bold">KuBah</h1>
+		<div class="flex items-start justify-between space-x-5">
+			<div>
+				<h1 class="color-gradient w-fit text-2xl font-bold">KuBah</h1>
+				<h2 class="text-sm font-medium text-gray-500">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi eaque nisi eum!</h2>
+			</div>
+			<a href="{{ route('emergencies.index') }}" class="inline-flex items-center rounded-lg bg-red-500 p-2 text-center text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+				<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+					<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+					<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.8 13.938h-.011a7 7 0 1 0-11.464.144h-.016l.14.171c.1.127.2.251.3.371L12 21l5.13-6.248c.194-.209.374-.429.54-.659l.13-.155Z" />
+				</svg>
+			</a>
+		</div>
 	</div>
+@endsection
+@section('actions')
+	<section class="fixed bottom-20 left-0 flex w-full justify-center bg-none">
+		<button type="button" id="panic-button" data-modal-target="panic-button-modal" data-modal-toggle="panic-button-modal" class="inline-flex items-center rounded-full bg-red-700 px-5 py-2.5 text-center text-sm font-medium text-white ring-4 ring-gray-200 hover:bg-red-800 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+			<svg class="mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+				<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+			</svg>
+			Panic Button
+		</button>
+	</section>
 @endsection
 @section('content')
 	<section class="mb-5">
@@ -69,3 +90,55 @@
 		</div>
 	</section>
 @endsection
+@push('modals')
+	<x-modal id="panic-button-modal">
+		<form action="{{ route('emergencies.store') }}" method="POST">
+			@csrf
+			<input type="hidden" id="input-longitude" name="longitude">
+			<input type="hidden" id="input-latitude" name="latitude">
+			<svg class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+				<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+			</svg>
+			<h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Kami akan membagikan lokasimu saat ini untuk membantu pengguna lain memberikan pertolongan secepatnya. <span class="font-bold">Izinkan akses lokasi untuk melanjutkan.</span></h3>
+			<button data-modal-hide="panic-button-modal" id="panic-button-modal-submit" type="submit" class="inline-flex items-center rounded-lg bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:bg-red-300 dark:focus:ring-red-800" disabled>
+				Bagikan Sekarang
+			</button>
+			<button data-modal-hide="panic-button-modal" type="button" class="ms-3 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-purple-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">
+				Tidak
+			</button>
+		</form>
+	</x-modal>
+@endpush
+@push('scripts')
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const inputLongitude = document.getElementById('input-longitude');
+			const inputLatitude = document.getElementById('input-latitude');
+			const panicButtonSubmit = document.getElementById('panic-button-modal-submit');
+			const panicButton = document.getElementById('panic-button');
+
+			if (panicButton) {
+				panicButton.addEventListener('click', () => {
+					if (navigator.geolocation) {
+						navigator.geolocation.getCurrentPosition(
+							(position) => {
+								inputLongitude.value = position.coords.longitude;
+								inputLatitude.value = position.coords.latitude;
+								panicButtonSubmit.removeAttribute('disabled');
+							},
+							(error) => {
+								alert('Error obtaining location: ' + error.message);
+							}, {
+								enableHighAccuracy: true,
+								timeout: 10000,
+								maximumAge: 0
+							}
+						);
+					} else {
+						alert('Geolocation is not supported by your browser.');
+					}
+				});
+			}
+		});
+	</script>
+@endpush
