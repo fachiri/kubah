@@ -26,7 +26,10 @@
 				@foreach ($articles as $article)
 					<li class="p-3 hover:bg-gray-200">
 						<a href="{{ route('articles.show', $article->slug) }}" class="block">
-							<div class="flex items-center space-x-4 rtl:space-x-reverse">
+							<div class="flex space-x-3 rtl:space-x-reverse">
+								<div class="flex-shrink-0">
+									<img src="{{ asset("storage/articles/$article->image") }}" alt="{{ $article->title }}" class="h-full w-12 border object-cover">
+								</div>
 								<div class="min-w-0 flex-1">
 									<p class="truncate text-sm font-medium text-gray-900 dark:text-white">
 										{{ $article->title }}
@@ -35,9 +38,6 @@
 										{{ strip_tags($article->content) }}
 									</p>
 									<p class="truncate text-xs text-gray-500 dark:text-gray-400">Diposting {{ $article->created_at->format('d M, Y. H:i') }} WITA</p>
-								</div>
-								<div class="inline-flex items-center">
-									<x-badge.status-complaint :status="$article->status" />
 								</div>
 							</div>
 						</a>
