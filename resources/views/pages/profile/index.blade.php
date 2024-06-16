@@ -10,8 +10,11 @@
 	<section class="mb-5">
 		<div class="flex flex-col items-center">
 			<img class="mb-3 h-24 w-24 rounded-full border shadow-lg" src="{{ auth()->user()->avatar ? asset('storage/avatars/' . auth()->user()->avatar) : asset('images/placeholder/avatar.png') }}" alt="Profile image">
-			<h5 class="mb-1 text-xl font-medium text-gray-700 dark:text-white">{{ auth()->user()->name }}</h5>
-			<span class="text-sm text-gray-500 dark:text-gray-400">
+			<h5 class="text-xl font-medium text-gray-700 dark:text-white">{{ auth()->user()->name }}</h5>
+			<span class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+				{{ auth()->user()->email }}
+			</span>
+			<span class="rounded px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">
 				@if (auth()->user()->manager)
 					Pimpinan
 				@elseif (auth()->user()->admin)
@@ -39,7 +42,7 @@
 				</a>
 			</li>
 			<li class="rounded border p-3 hover:bg-gray-200">
-				<a href="#" class="flex w-full items-center justify-between">
+				<a href="{{ route('security.index') }}" class="flex w-full items-center justify-between">
 					<p class="truncate text-sm font-semibold text-gray-700 dark:text-white">
 						Keamanan Akun
 					</p>
