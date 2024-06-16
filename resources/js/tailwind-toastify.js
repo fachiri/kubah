@@ -2,7 +2,7 @@ function createConfirm(options) {
     // Create toast container element
     const toastContainer = document.createElement('div');
     toastContainer.id = 'toast-confirm';
-    toastContainer.classList.add('fixed', 'right-5', 'top-5', 'w-full', 'max-w-xs', 'rounded-lg', 'bg-white', 'p-4', 'text-gray-500', 'shadow', 'dark:bg-gray-800', 'dark:text-gray-400');
+    toastContainer.classList.add('z-50', 'fixed', 'right-5', 'top-5', 'w-full', 'max-w-xs', 'rounded-lg', 'bg-white', 'p-4', 'text-gray-500', 'shadow', 'dark:bg-gray-800', 'dark:text-gray-400');
     toastContainer.setAttribute('role', 'alert');
 
     // Create inner flex container
@@ -131,7 +131,7 @@ function createNotif(options) {
     // Create notification container
     const notificationContainer = document.createElement('div');
     notificationContainer.id = 'toast-notification';
-    notificationContainer.classList.add('fixed', 'right-5', 'top-5', 'w-full', 'max-w-xs', 'p-4', 'text-gray-900', 'bg-white', 'rounded-lg', 'shadow', 'dark:bg-gray-800', 'dark:text-gray-300');
+    notificationContainer.classList.add('z-50', 'fixed', 'right-5', 'top-5', 'w-full', 'max-w-xs', 'p-4', 'text-gray-900', 'bg-white', 'rounded-lg', 'shadow', 'dark:bg-gray-800', 'dark:text-gray-300');
     notificationContainer.setAttribute('role', 'alert');
 
     // Create header container
