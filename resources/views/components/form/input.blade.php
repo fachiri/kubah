@@ -6,7 +6,7 @@
 	'type' => 'text',
 	'placeholder' => '',
 	'maxlength' => '',
-	'value' => old($name)
+	'value' => ''
 ])
 
 <div class="{{ $class }}">
@@ -20,7 +20,7 @@
 		{{ $attributes->class(["block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-purple-500 focus:ring-purple-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-purple-500 dark:focus:ring-purple-500", $inputClass, 'border-red-700' => $errors->get(str_replace('[]', '', $name))]) }}
 		placeholder="{{ $placeholder }}"
 		maxlength="{{ $maxlength }}"
-		value="{{ $value }}"
+		value="{{ old($name) ?? $value }}"
 	/>
 	@error(str_replace('[]', '', $name))
 		<p class="mt-2 text-xs text-red-600 dark:text-red-500">
