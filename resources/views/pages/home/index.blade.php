@@ -1,11 +1,11 @@
 @extends('layouts.main')
 @section('title', 'Home')
 @section('header')
-	<div class="px-5 pt-4">
+	<div class="px-5 pt-4 sm:hidden">
 		<div class="flex items-start justify-between space-x-5">
 			<div>
 				<h1 class="color-gradient w-fit text-2xl font-bold">KuBah</h1>
-				<h2 class="text-sm font-medium text-gray-500">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi eaque nisi eum!</h2>
+				<h2 class="text-sm font-medium text-gray-500">Segera Laporkan Jika Mengalami Atau Menjadi Saksi Adanya Kekerasan Dalam Rumah Tangga dan Kekerasan Seksual!</h2>
 			</div>
 			<a href="{{ route('emergencies.index') }}" class="inline-flex items-center rounded-lg bg-red-500 p-2 text-center text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
 				<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -17,14 +17,12 @@
 	</div>
 @endsection
 @section('actions')
-	<section class="fixed bottom-20 left-0 flex w-full justify-center bg-none">
-		<button type="button" id="panic-button" data-modal-target="panic-button-modal" data-modal-toggle="panic-button-modal" class="inline-flex items-center rounded-full bg-red-700 px-5 py-2.5 text-center text-sm font-medium text-white ring-4 ring-gray-200 hover:bg-red-800 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-			<svg class="mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-				<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-			</svg>
-			Panic Button
-		</button>
-	</section>
+	<button type="button" id="panic-button" data-modal-target="panic-button-modal" data-modal-toggle="panic-button-modal" class="inline-flex items-center rounded-full bg-red-700 px-5 py-2.5 text-center text-sm font-medium text-white ring-4 ring-gray-200 hover:bg-red-800 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 sm:w-full sm:ring-0 sm:justify-center">
+		<svg class="mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+			<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+		</svg>
+		Panic Button
+	</button>
 @endsection
 @section('content')
 	<section class="mb-5">
@@ -75,7 +73,7 @@
 				</svg>
 			</a>
 		</div>
-		<div class="grid grid-cols-2 gap-3">
+		<div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
 			@foreach ($articles as $article)
 				<div class="rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
 					<img class="rounded-t-lg" src="{{ asset("storage/articles/$article->image") }}" alt="{{ $article->title }}" />

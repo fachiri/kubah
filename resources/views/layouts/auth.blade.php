@@ -28,7 +28,7 @@
 			<div class="mb-5">
 				<img src="{{ asset('images/illustration/society.png') }}" alt="Society Illustration">
 			</div>
-			<h2 class="mb-5 text-center font-medium">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi eaque nisi eum!</h2>
+			<h2 class="mb-5 text-center font-medium">Segera Laporkan Jika Mengalami Atau Menjadi Saksi Adanya Kekerasan Dalam Rumah Tangga dan Kekerasan Seksual!</h2>
 			@yield('content')
 		</main>
 		@include('includes.footer')
