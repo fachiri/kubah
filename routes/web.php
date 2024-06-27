@@ -10,6 +10,7 @@ use App\Http\Controllers\EmergencyController;
 use App\Http\Controllers\FilePondController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\SecurityController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['guest'])->group(function () {
@@ -42,5 +43,6 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/security/change-password', [SecurityController::class, 'change_password'])->name('security.change_password');
     Route::get('/filepond/load/file', [FilePondController::class, 'load_file'])->name('filepond.load.file');
     Route::get('/filepond/load/files', [FilePondController::class, 'load_files'])->name('filepond.load.files');
+    Route::post('/setting/panic-button', [SettingController::class, 'panic_button'])->name('settings.panic_button');
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });

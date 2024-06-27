@@ -56,12 +56,12 @@
 
 	<body class="bg-slate-300">
 		<aside id="default-sidebar" class="fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform sm:translate-x-0" aria-label="Sidebar">
-			<div class="h-full overflow-y-auto flex flex-col bg-purple-700 px-3 py-4">
-				<a href="/home" class="flex mb-4 pb-3 border-b-2 border-purple-500">
-					<img src="{{ asset('images/icons/icon-144x144.png') }}" class="h-8 me-3" alt="KuBah Logo" />
+			<div class="flex h-full flex-col overflow-y-auto bg-purple-700 px-3 py-4">
+				<a href="/home" class="mb-4 flex border-b-2 border-purple-500 pb-3">
+					<img src="{{ asset('images/icons/icon-144x144.png') }}" class="me-3 h-8" alt="KuBah Logo" />
 					<h1 class="w-fit text-2xl font-bold text-slate-200">KuBah</h1>
 				</a>
-				<ul class="space-y-2 font-medium grow">
+				<ul class="grow space-y-2 font-medium">
 					<li>
 						<a href="/home" class="{{ request()->is('home') ? 'bg-purple-600' : '' }} group flex items-center rounded-lg p-2 text-white hover:bg-purple-600">
 							<svg class="h-5 w-5 text-slate-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
@@ -73,10 +73,12 @@
 					<li>
 						<a href="/emergencies" class="{{ request()->is('emergencies') ? 'bg-purple-600' : '' }} group flex items-center rounded-lg p-2 text-white hover:bg-purple-600">
 							<svg class="h-5 w-5 text-slate-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-								<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-								<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.8 13.938h-.011a7 7 0 1 0-11.464.144h-.016l.14.171c.1.127.2.251.3.371L12 21l5.13-6.248c.194-.209.374-.429.54-.659l.13-.155Z" />
+								<path fill-rule="evenodd" d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z" clip-rule="evenodd" />
 							</svg>
-							<span class="ms-3">Peta</span>
+							<span class="ms-3 grow">Darurat</span>
+							@if (auth()->user()->isAdmin())
+								<span class="rounded-full border px-2 text-xs">{{ App\Helpers\Setting::get('panic_button') }}</span>
+							@endif
 						</a>
 					</li>
 					@can('viewAny', App\Models\Chat::class)
